@@ -102,23 +102,23 @@ class Controller extends BaseController
         $testResult = TestResult::find($test_result_id);
         if ($testResult) {
             $testResult->delete();
-            return $this->jsonResponse(['mensagem' => 'Registro excluído com sucesso!'],200);
+            return $this->jsonResponse(['mensagem' => 'Resultado excluído com sucesso!'],200);
         } else {
-            return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+            return $this->jsonResponse(['erro' => 'Resultado não encontrado!'],404);
         }
     }
 
     protected function destroyTestItem(int $test_item_id) {
-        $itemResults = TestItem::query()->where('test_item_id', $test_item_id)->get();
+        $itemResults = ItemResult::query()->where('test_item_id', $test_item_id)->get();
         foreach ($itemResults as $itemResult) {
             $this->destroyItemResult($itemResult->id);
         }
         $testItem = TestItem::find($test_item_id);
         if ($testItem) {
             $testItem->delete();
-            return $this->jsonResponse(['mensagem' => 'Registro excluído com sucesso!'],200);
+            return $this->jsonResponse(['mensagem' => 'Item excluído com sucesso!'],200);
         } else {
-            return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+            return $this->jsonResponse(['erro' => 'Item não encontrado!'],404);
         }
     }
 
@@ -126,9 +126,9 @@ class Controller extends BaseController
         $itemResult = ItemResult::find($item_result_id);
         if ($itemResult) {
             $itemResult->delete();
-            return $this->jsonResponse(['mensagem' => 'Registro excluído com sucesso!'],200);
+            return $this->jsonResponse(['mensagem' => 'Resultado de item excluído com sucesso!'],200);
         } else {
-            return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+            return $this->jsonResponse(['erro' => 'Resultado de item não encontrado!'],404);
         }
     }
 }

@@ -30,7 +30,7 @@ class TestRecordsController extends Controller
         for ($i = 0; $i < count($request->records); $i++) {
             $this->newTestRecord($request->records[$i]);
         }
-        return $this->jsonResponse(['mensagem' => 'Registro adicionado com sucesso!'],200);
+        return $this->jsonResponse(['mensagem' => 'Registro(s) adicionado(s) com sucesso!'],200);
     }
 
     public function destroy(int $test_record_id)
