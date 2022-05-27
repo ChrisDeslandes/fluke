@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Documentação da API</title>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>Documentação da API</h1>
+        </header>
+        <nav>
+            <ul>
+                <a href="#create"><li>CREATE</li></a>
+                <a href="#read"><li>READ</li></a>
+                <a href="#update"><li>UPDATE</li></a>
+                <a href="#delete"><li>DELETE</li></a>
+            </ul>
+        </nav>
+        <main>
+            <h2 id="create">CREATE</h2>
+            <section>
+                <h3>Adicionar registro (record)</h3>
+                <p>Só é permitida a adição de registros (“<i>records</i>”), podendo este conter ou não informações de “<i>results</i>”, “<i>items</i>” e “<i>item_results</i>”, levando-se em consideração que <u>NÃO SERÁ POSSÍVEL</u> alterar ou adicionar novos resultados para o registro.</p>
+                <p>Para inserir um registro, deve-se utilizar o método <i>POST</i> no endpoint “<i><span style="color:blue;">/records</span></i>” e, no corpo da requisição, enviar um <i>JSON</i> formatado da maneira indicada abaixo, lembrando-se de que onde há colchetes existe um <i>array</i>, logo é possível adicionar mais de um item. Apenas os campos “<i>lead</i>”, “<i>high_limit</i>” e “<i>low_limit</i>” podem ser nulos (<i>null</i>).</p>
+                <textarea rows="70"  disabled>
+{
+    "records":
+    [
+        {
+            "date": "11/05/2022",
+            "record": "IEC 60601-1 - CL1 - F7210301293.mtr",
+            "template": "IEC 60601-1 - CL1 - P1x_R3_Mx_MDx_Tx.mtt",
+            "template_version": "1.0.12",
+            "ansur_version": "3.1.4",
+            "plugin": "ESA620",
+            "plugin_version": "1.1.4",
+            "device_serial_number": "F7210301293",
+            "device_model": "SAPRMNT111101",
+            "mti_test_instrument": "ESA 620",
+            "mti_serial_number": "2428026",
+            "mti_firmware_version": "v2.10",
+            "test_results":
+             [
+                {
+                    “test_element": "Teste para Classe 1 - P1x/R3/Mx/Tx",
+                    "test_type": "Auto Sequence",
+                    "procedure": "Este teste está previsto para os equipamentos ...",
+                    "test_items":
+                    [
+                        {
+			    "name": "Test Group",
+			    "success": true,
+			    "item_results":
+			    [
+				{
+				    "lead": null,
+				    "value": "99999",
+				    "unit": "MOhm",
+				    "high_limit": null,
+				    “low_limit": null,
+				    "standard": "User defined IEC 60601"
+				}
+			    ]
+			},
+			{
+			    "name": "Single Fault Condition",
+			    "success": true,
+			    "item_results":
+			    [
+				{
+				    "lead": "RA",
+				    "value": "13,7",
+				    "unit": "uA",
+				    "high_limit": "1000",
+				    "low_limit": "50",
+				    "standard": "User defined IEC 60601"
+				},
+				{
+				    "lead": "LL",
+				    "value": "13,7",
+				    "unit": "uA",
+				    "high_limit": "1000",
+				    "low_limit": "50",
+				    "standard": "User defined IEC 60601"
+				}
+			    ]
+			}
+		    ]
+		}
+	    ]
+	}
+    ]
+}
+                </textarea>
+            </section>
+            <h2 id="read">READ</h2>
+            <section>
+                <h3>Ler todos os registros (records)</h3>
+                <p>Para ler todos os registros, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/records</span></i>”.</p>
+                <h3>Ler registro (record)</h3>
+                <p>Para ler um registro, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/records/{id}</span></i>", onde {id} é o “<i>id</i>” do registro a ser lido.</p>
+                <h3>Ler todos os resultados de um registro</h3>
+                <p>Para ler todos os resultados de um registro, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/records/{id}/results</span></i>”, onde {id} é o “<i>id</i>” do registro cujos resultados serão lidos.</p>
+                <h3>Ler resultado (result)</h3>
+                <p>Para ler um resultado, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/results/{id}</span></i>", onde {id} é o “<i>id</i>” do resultado a ser lido.</p>
+                <h3>Ler todos os items de um resultado</h3>
+                <p>Para ler todos os items de um resultado, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/results/{id}/items</span></i>”, onde {id} é o “<i>id</i>” do resultado cujos itens serão lidos.</p>
+                <h3>Ler item</h3>
+                <p>Para ler um item, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/items/{id}</span></i>", onde {id} é o “<i>id</i>” do resultado do item a ser lido.</p>
+                <h3>Ler todos os resultados de um item</h3>
+                <p>Para ler todos os resultados de um item, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/items/{id}/item_results</span></i>”, onde {id} é o “<i>id</i>” do item cujos resultados serão lidos.</p>
+                <h3>Ler resultado de item (item_result)</h3>
+                <p>Para ler um resultado de item, deve-se utilizar o método <i>GET</i> no endpoint “<i><span style="color: blue;">/item_results/{id}</span></i>", onde {id} é o “<i>id</i>” do resultado de item a ser lido.</p>
+            </section>
+            <h2 id="update">UPDATE</h2>
+            <section>
+                <h3>Alterar resultado (result)</h3>
+                <p>Só é possível a alteração dos campos “<i>test_element</i>” e “<i>procedure</i>” do resultado.</p>
+                <p>Para atualizar os campos, deve-se utilizar o método <i>PATCH</i> no endpoint “<i><span style="color:blue;">/results/{id}</span></i>”, onde {id} é o “<i>id</i>” do resultado a ser alterado, e, no corpo da requisição, enviar um <i>JSON</i> formatado da maneira indicada abaixo. Apenas um dos campos é necessário ser informado no <i>JSON</i>, caso o objetivo seja alterar apenas um.</p>
+                <textarea rows="5"  disabled>
+{
+    "test_element": "Teste para Classe 1 - P1x/R3/Mx/Tx",
+    "procedure": "Este teste está previsto para os equipamentos ..."
+}
+                </textarea>
+            </section>
+            <h2 id="delete">DELETE</h2>
+            <section>
+                <h3>Excluir registro (record)</h3>
+                <p><span style="color:red;text-decoration:underline;">Cuidado:</span> Com a exclusão de um registro, também serão excluídos os seus resultados, itens e resultados de cada item.</p>
+                <p>Para excluir um registro, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/records/{id}</span></i>”, onde {id} é o “<i>id</i>” do registro a ser excluído.</p>
+
+                <h3>Excluir resultado (result)</h3>
+                <p><span style="color:red;text-decoration:underline;">Cuidado:</span> Com a exclusão de um resultado, também serão excluídos os seus itens e resultados de cada item.</p>
+                <p>Para excluir um resultado, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/results/{id}</span></i>”, onde {id} é o “<i>id</i>” do resultado a ser excluído.</p>
+
+                <h3>Excluir item</h3>
+                <p><span style="color:red;text-decoration:underline;">Cuidado:</span> Com a exclusão de um item, também serão excluídos os resultados de cada item.</p>
+                <p>Para excluir um item, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/items/{id}</span></i>”, onde {id} é o “<i>id</i>” do item a ser excluído.</p>
+
+                <h3>Excluir resultado de item (item_result)</h3>
+                <p>Para excluir um resultado de item, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/item_results/{id}</span></i>”, onde {id} é o “<i>id</i>” do resultado do item a ser excluído.</p>
+            </section>
+        </main>
+        <footer>
+            <h4>Alunos:</h4>
+            <p>Christiano Deslandes Ribeiro</p>
+            <p>Felipe Pedrosa</p>
+        </footer>
+    </div>
+</body>
+</html>

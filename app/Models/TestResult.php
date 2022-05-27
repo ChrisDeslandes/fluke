@@ -6,14 +6,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class TestResult extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['test_element', 'test_type', 'procedure', 'test_record_id'];
     public $timestamps = false;
-    protected $appends = ['links'];
+    protected $appends = ['test_items', 'links'];
 
-    public function getLinksAttribute($links) : array
+    public function getTestItemsAttribute()
+    {
+        return TestItem::query()->where('test_result_id', $this->id)->get();
+    }
+
+    public function getLinksAttribute() : array
     {
         return [
-            'self' => '/equipamentos/' . $this->id
+            'record' => '/records/' . $this->test_record_id . '/',
+            'self' => '/results/' . $this->id . '/',
+            'items' => '/results/' . $this->id . '/items/'
         ];
     }
 }
