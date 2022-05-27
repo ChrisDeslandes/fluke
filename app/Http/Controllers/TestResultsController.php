@@ -22,7 +22,7 @@ class TestResultsController extends Controller
         if ($testResult) {
             return $this->jsonResponse($testResult,200);
         }
-        return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+        return $this->jsonResponse(['erro' => 'Resultado não encontrado!'],404);
     }
 
     public function update(int $test_result_id, Request $request)
@@ -38,7 +38,7 @@ class TestResultsController extends Controller
             $testResult->save();
             return $this->jsonResponse(["mensagem" => "Campo(s) 'test_element' e/ou 'procedure' alterado(s) com sucesso!"],200);
         }
-        return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+        return $this->jsonResponse(['erro' => 'Resultado não encontrado!'],404);
     }
 
     public function destroy(int $test_result_id)

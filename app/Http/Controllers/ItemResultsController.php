@@ -21,7 +21,7 @@ class ItemResultsController extends Controller
         if ($itemResult) {
             return $this->jsonResponse($itemResult,200);
         }
-        return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+        return $this->jsonResponse(['erro' => 'Resultado de item não encontrado!'],404);
     }
 
     public function destroy(int $item_result_id)

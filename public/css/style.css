@@ -29,12 +29,15 @@ main {
 
 footer {
     background-color: #aaa;
-    color: white;
     border: 2px solid black;
 }
 
-footer p {
+footer p, footer h3 {
+    color: white;
     text-align: center;
+}
+
+footer p {
     margin-bottom: 0;
 }
 

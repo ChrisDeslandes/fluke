@@ -21,7 +21,7 @@ class TestItemsController extends Controller
         if ($testItem) {
             return $this->jsonResponse($testItem,200);
         }
-        return $this->jsonResponse(['erro' => 'Registro não encontrado!'],404);
+        return $this->jsonResponse(['erro' => 'Item não encontrado!'],404);
     }
 
     public function destroy(int $test_item_id)

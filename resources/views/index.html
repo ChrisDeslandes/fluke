@@ -25,7 +25,7 @@
                 <h3>Adicionar registro (record)</h3>
                 <p>Só é permitida a adição de registros (“<i>records</i>”), podendo este conter ou não informações de “<i>results</i>”, “<i>items</i>” e “<i>item_results</i>”, levando-se em consideração que <u>NÃO SERÁ POSSÍVEL</u> alterar ou adicionar novos resultados para o registro.</p>
                 <p>Para inserir um registro, deve-se utilizar o método <i>POST</i> no endpoint “<i><span style="color:blue;">/records</span></i>” e, no corpo da requisição, enviar um <i>JSON</i> formatado da maneira indicada abaixo, lembrando-se de que onde há colchetes existe um <i>array</i>, logo é possível adicionar mais de um item. Apenas os campos “<i>lead</i>”, “<i>high_limit</i>” e “<i>low_limit</i>” podem ser nulos (<i>null</i>).</p>
-                <textarea rows="70"  disabled>
+                <textarea rows="69"  disabled>
 {
     "records":
     [
@@ -93,8 +93,7 @@
 	    ]
 	}
     ]
-}
-                </textarea>
+}</textarea>
             </section>
             <h2 id="read">READ</h2>
             <section>
@@ -120,12 +119,11 @@
                 <h3>Alterar resultado (result)</h3>
                 <p>Só é possível a alteração dos campos “<i>test_element</i>” e “<i>procedure</i>” do resultado.</p>
                 <p>Para atualizar os campos, deve-se utilizar o método <i>PATCH</i> no endpoint “<i><span style="color:blue;">/results/{id}</span></i>”, onde {id} é o “<i>id</i>” do resultado a ser alterado, e, no corpo da requisição, enviar um <i>JSON</i> formatado da maneira indicada abaixo. Apenas um dos campos é necessário ser informado no <i>JSON</i>, caso o objetivo seja alterar apenas um.</p>
-                <textarea rows="5"  disabled>
+                <textarea rows="4"  disabled>
 {
     "test_element": "Teste para Classe 1 - P1x/R3/Mx/Tx",
     "procedure": "Este teste está previsto para os equipamentos ..."
-}
-                </textarea>
+}</textarea>
             </section>
             <h2 id="delete">DELETE</h2>
             <section>
@@ -138,7 +136,7 @@
                 <p>Para excluir um resultado, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/results/{id}</span></i>”, onde {id} é o “<i>id</i>” do resultado a ser excluído.</p>
 
                 <h3>Excluir item</h3>
-                <p><span style="color:red;text-decoration:underline;">Cuidado:</span> Com a exclusão de um item, também serão excluídos os resultados de cada item.</p>
+                <p><span style="color:red;text-decoration:underline;">Cuidado:</span> Com a exclusão de um item, também serão excluídos os resultados do item.</p>
                 <p>Para excluir um item, deve-se utilizar o método <i>DELETE</i> no endpoint “<i><span style="color:blue;">/items/{id}</span></i>”, onde {id} é o “<i>id</i>” do item a ser excluído.</p>
 
                 <h3>Excluir resultado de item (item_result)</h3>
@@ -146,9 +144,14 @@
             </section>
         </main>
         <footer>
-            <h4>Alunos:</h4>
-            <p>Christiano Deslandes Ribeiro</p>
-            <p>Felipe Pedrosa</p>
+            <h3>API construída pelos alunos:</h3>
+            <p>Christiano Deslandes Ribeiro - RA nº 320252723</p>
+            <p>Felipe Marconi Faria Pedrosa - RA nº 320112156</p>
+            <p>Guilherme Pedrosa Mendonça - RA nº 320126566</p>
+            <p>Pedro Henrique Miranda Lima - RA nº 320133258</p>
+            <p>Gabriel Augusto Oliveira Pereira de Paula - RA nº 320124242</p>
+            <p>Alan Wender Rodrigues Dias - RA nº 320130147</p>
+            <p>Marcelo Jacinto Alves - RA nº 320136724</p>
         </footer>
     </div>
 </body>
