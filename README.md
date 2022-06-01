@@ -15,3 +15,4 @@ O trabalho foi desenvolvido com o framework Lumen para PHP.
 #### - Gabriel Augusto Oliveira Pereira de Paula
 #### - Alan Wender Rodrigues Dias
 #### - Marcelo Jacinto Alves
+#### - Pedro Henrique Diniz Araújo Picorelli Santos
