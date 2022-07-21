@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('test_type');
             $table->string('procedure', 1000);
             $table->unsignedBigInteger('test_record_id');
+
             $table->foreign('test_record_id')->references('id')->on('test_records');
         });
     }

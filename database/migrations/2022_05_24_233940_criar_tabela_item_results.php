@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('low_limit')->nullable()->default(null);
             $table->string('standard');
             $table->unsignedBigInteger('test_item_id');
+
             $table->foreign('test_item_id')->references('id')->on('test_items');
         });
     }

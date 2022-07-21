@@ -31,8 +31,10 @@ class Controller extends BaseController
             'mti_serial_number' => $record['mti_serial_number'],
             'mti_firmware_version' => $record['mti_firmware_version']
         ]);
-        for ($i = 0; $i < count($record['test_results']); $i++) {
-            $this->newTestResult($record['test_results'][$i], $newRecord->id);
+        if(array_key_exists('test_results',$record)) {
+            for ($i = 0; $i < count($record['test_results']); $i++) {
+                $this->newTestResult($record['test_results'][$i], $newRecord->id);
+            }
         }
     }
 
@@ -45,8 +47,10 @@ class Controller extends BaseController
                 'procedure' => $result['procedure'],
                 'test_record_id' => $test_record_id
             ]);
-            for ($i = 0; $i < count($result['test_items']); $i++) {
-                $this->newTestItem($result['test_items'][$i], $newResult->id);
+            if(array_key_exists('test_items',$result)) {
+                for ($i = 0; $i < count($result['test_items']); $i++) {
+                    $this->newTestItem($result['test_items'][$i], $newResult->id);
+                }
             }
         }
     }
@@ -59,8 +63,10 @@ class Controller extends BaseController
                 'success' => $testItem['success'],
                 'test_result_id' => $test_result_id
             ]);
-            for ($i = 0; $i < count($testItem['item_results']); $i++) {
-                $this->newItemResult($testItem['item_results'][$i], $newItem->id);
+            if (array_key_exists('item_results',$testItem)) {
+                for ($i = 0; $i < count($testItem['item_results']); $i++) {
+                    $this->newItemResult($testItem['item_results'][$i], $newItem->id);
+                }
             }
         }
     }

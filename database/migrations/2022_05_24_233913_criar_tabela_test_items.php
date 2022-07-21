@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->boolean('success');
             $table->unsignedBigInteger('test_result_id');
+
             $table->foreign('test_result_id')->references('id')->on('test_results');
         });
     }
